@@ -8,10 +8,10 @@ module GameClient
 		  scheme: 'http',
 		  host: 'localhost',
 		  port: 3000,
-		  path: '/index'
+		  path: '/games'
 		).to_s
 
-		RestClient.get(url)
+		JSON.parse(RestClient.get(url))
 	end
 
 	def create_game

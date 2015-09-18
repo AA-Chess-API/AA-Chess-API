@@ -24,7 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # be ware of this thing!!
-gem 'safe_attributes'
+# gem 'safe_attributes'
 
 gem 'addressable'
 gem 'rest-client'

@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150917052400) do
     t.string   "name",                              null: false
     t.string   "initiator_id"
     t.string   "challenger_id"
-    t.text     "record"
+    t.text     "game_log"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
     t.string   "state",         default: "WAITING", null: false
