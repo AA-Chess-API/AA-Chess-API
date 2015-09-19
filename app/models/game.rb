@@ -14,11 +14,36 @@
 class Game < ActiveRecord::Base
   STATES = %w(WAITING, PLAYING, FINISHED)
 
-  validates :initiator_id, :challenger_id, :name, presence: true
+  validates :initiator_id, :name, presence: true
 
   def self.eligible_games
     all.
     where("state != 'FINISHED'").
     select(:id, :name, :initiator_id, :challenger_id, :state)
+  end
+
+  def set_challenger(challenger_id)
+    self.challenger_id = challenger_id
+    self.last_player = [challenger_id, initiator_id].sample
+    save!
+  end
+
+  def confirm_move_of(player, move)
+    if last_player == player
+      "404"
+    else
+      self.last_player = player
+      self.last_move = move
+      save!
+      "202"
+    end
+  end
+
+  def get_state_for(player)
+    if last_player == player
+      { state: "WAIT" }
+    else
+      { state: "GO", move: last_move }
+    end
   end
 end

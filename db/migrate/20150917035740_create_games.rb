@@ -4,7 +4,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :name, null: false, unique: true
       t.integer :initiator_id
       t.integer :challenger_id
-      t.text :record
+      t.text :game_log
 
       t.timestamps null: false
     end
