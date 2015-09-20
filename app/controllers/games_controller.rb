@@ -8,7 +8,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    debugger
     game = Game.new(name: params[:game_name], initiator_id: params[:player_name])
 
     if game.save
