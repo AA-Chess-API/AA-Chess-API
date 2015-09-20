@@ -8,10 +8,12 @@ class GamesController < ApplicationController
   end
 
   def create
-    game = Game.new(name: params[:g], initiator_id: params[:p])
+    game = Game.new(name: params[:game_name], initiator_id: params[:play_name])
 
     if game.save
-      render json: game_url(game, player: game.initiator_id)
+      render json: ({ game_name: :game_name,
+                   initiator_id: :play_name,
+                            url: game_url(game, player: game.initiator_id) })
     else
       render text: 404
     end

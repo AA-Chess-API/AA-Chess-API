@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150919215904) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "games", force: :cascade do |t|
     t.string   "name",                              null: false
     t.string   "initiator_id"
@@ -25,6 +28,6 @@ ActiveRecord::Schema.define(version: 20150919215904) do
     t.string   "last_player"
   end
 
-  add_index "games", ["name"], name: "index_games_on_name"
+  add_index "games", ["name"], name: "index_games_on_name", using: :btree
 
 end

@@ -4,11 +4,14 @@
 #
 #  id            :integer          not null, primary key
 #  name          :string           not null
-#  initiator_id  :integer
-#  challenger_id :integer
-#  record        :text
+#  initiator_id  :string
+#  challenger_id :string
+#  game_log      :text
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  state         :string           default("WAITING"), not null
+#  last_move     :string
+#  last_player   :string
 #
 
 class Game < ActiveRecord::Base
