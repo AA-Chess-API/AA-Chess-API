@@ -22,7 +22,9 @@ class GamesController < ApplicationController
   def join
     game = Game.find_by_name(params[:game_name])
 
-    if game
+    if game && game.state == 'WAITING'
+      game.state = "PLAYING"
+
       game.set_challenger(params[:player_name])
       render json: game_url(game, player: game.challenger_id)
     else
