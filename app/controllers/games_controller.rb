@@ -20,10 +20,10 @@ class GamesController < ApplicationController
   end
 
   def join
-    game = Game.find_by_name(params[:g])
+    game = Game.find_by_name(params[:game_name])
 
     if game
-      game.set_challenger(params[:p])
+      game.set_challenger(params[:player_name])
       render json: game_url(game, player: game.challenger_id)
     else
       render text: 404
