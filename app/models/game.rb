@@ -15,7 +15,7 @@
 #
 
 class Game < ActiveRecord::Base
-  STATES = %w(WAITING, PLAYING, FINISHED)
+  STATES = %w(WAITING PLAYING FINISHED)
 
   validates :initiator_id, :name, presence: true
 
