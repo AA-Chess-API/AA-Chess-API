@@ -51,8 +51,16 @@ class Game < ActiveRecord::Base
     end
   end
 
-  def end_game!
-    self.state = "FINISHED"
-    save
+  def end_game!(quiter)
+    return false if state == "FINISHED"
+    
+    if [initiator_id, challenger_id].include?(quiter)
+      self.state = "FINISHED"
+      save
+
+      return true
+    end
+
+    false
   end
 end

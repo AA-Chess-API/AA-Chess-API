@@ -55,10 +55,9 @@ class GamesController < ApplicationController
   end
 
   def quit
-    game = Game.find(params[:id])
+    game = Game.find_by_name(params[:game_name])
 
-    if game
-      game.end_game!
+    if game && game.end_game!(params[:player_name])
       render text: "Game Over!"
     else
       render text: 404
