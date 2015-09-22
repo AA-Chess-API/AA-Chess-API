@@ -53,4 +53,15 @@ class GamesController < ApplicationController
       render text: 404
     end
   end
+
+  def quit
+    game = Game.find(params[:id])
+
+    if game
+      game.end_game!
+      render text: "Game Over!"
+    else
+      render text: 404
+    end
+  end
 end

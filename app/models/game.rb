@@ -49,4 +49,9 @@ class Game < ActiveRecord::Base
       { state: "GO", move: last_move }
     end
   end
+
+  def end_game!
+    self.state = "FINISHED"
+    save
+  end
 end
